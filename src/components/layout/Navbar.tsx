@@ -1,7 +1,9 @@
 import Link from "next/link";
 
+type PublicNavPage = "beranda" | "lowongan" | "perusahaan" | "tentang" | "blog" | "privasi";
+
 interface NavbarProps {
-  activePage?: "beranda" | "lowongan" | "perusahaan" | "tentang";
+  activePage?: PublicNavPage;
 }
 
 export default function Navbar({ activePage = "beranda" }: NavbarProps) {

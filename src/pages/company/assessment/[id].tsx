@@ -19,10 +19,13 @@ import {
   CheckCircle2,
   Clock,
   ChevronDown,
+  ChevronRight,
   GripVertical,
   Award,
   Search,
   Eye,
+  Play,
+  FileText,
 } from "lucide-react";
 
 interface Question {
@@ -50,6 +53,14 @@ interface AssessmentData {
   position: string;
   duration: number;
   status: "Active" | "Draft";
+}
+
+interface QuestionFormState {
+  type: Question["type"];
+  question: string;
+  options: string[];
+  correctAnswer: string;
+  points: string;
 }
 
 const initialQuestions: Question[] = [
@@ -200,7 +211,9 @@ function DraggableQuestion({
 
   return (
     <div
-      ref={(node) => drag(drop(node))}
+      ref={(node) => {
+        drag(drop(node));
+      }}
       className={`bg-white rounded-2xl border border-gray-100 p-6 hover:shadow-md transition-all ${
         isDragging ? "opacity-50" : ""
       }`}
@@ -274,14 +287,17 @@ export default function DetailAssessment() {
   const [showEditModal, setShowEditModal] = useState<number | null>(null);
   const [showDeleteModal, setShowDeleteModal] = useState<number | null>(null);
   const [showEditAssessmentModal, setShowEditAssessmentModal] = useState(false);
+  const [showPreviewModal, setShowPreviewModal] = useState(false);
+  const [previewCurrentQuestion, setPreviewCurrentQuestion] = useState(0);
+  const [previewAnswers, setPreviewAnswers] = useState<Record<number, string>>({});
   const [assessmentData, setAssessmentData] = useState<AssessmentData>({
     title: "Frontend Developer Assessment",
     position: "Senior Frontend Developer",
     duration: 60,
     status: "Active",
   });
-  const [newQuestion, setNewQuestion] = useState({
-    type: "Pilihan Ganda" as const,
+  const [newQuestion, setNewQuestion] = useState<QuestionFormState>({
+    type: "Pilihan Ganda",
     question: "",
     options: ["", "", "", ""],
     correctAnswer: "",
@@ -400,6 +416,17 @@ export default function DetailAssessment() {
                 >
                   {assessmentData.status === "Active" ? "Aktif" : "Draft"}
                 </span>
+                <button
+                  onClick={() => {
+                    setPreviewCurrentQuestion(0);
+                    setPreviewAnswers({});
+                    setShowPreviewModal(true);
+                  }}
+                  className="flex items-center gap-2 bg-gray-100 text-gray-700 px-5 py-2.5 rounded-xl font-semibold hover:bg-gray-200 transition-all"
+                >
+                  <Eye className="w-4 h-4" />
+                  Preview
+                </button>
                 <button
                   onClick={() => setShowEditAssessmentModal(true)}
                   className="flex items-center gap-2 bg-sky-500 text-white px-5 py-2.5 rounded-xl font-semibold hover:bg-sky-600 transition-all shadow-md"
@@ -875,6 +902,216 @@ export default function DetailAssessment() {
                     Hapus
                   </button>
                 </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Preview Assessment Modal */}
+        {showPreviewModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50">
+            <div className="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-hidden flex flex-col">
+              {/* Preview Header */}
+              <div className="flex items-center justify-between p-6 border-b border-gray-100 bg-gray-50">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-sky-100 rounded-xl flex items-center justify-center">
+                    <Eye className="w-5 h-5 text-sky-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-gray-900">Preview Assessment</h3>
+                    <p className="text-sm text-gray-500">Tampilan seperti yang dilihat kandidat</p>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setShowPreviewModal(false)}
+                  className="p-2 hover:bg-gray-200 rounded-lg transition-colors"
+                >
+                  <X className="w-5 h-5 text-gray-500" />
+                </button>
+              </div>
+
+              {/* Preview Content */}
+              <div className="flex-1 overflow-y-auto p-6">
+                {/* Assessment Info */}
+                <div className="bg-gradient-to-r from-sky-500 to-green-500 rounded-2xl p-6 text-white mb-6">
+                  <h2 className="text-2xl font-bold mb-2">{assessmentData.title}</h2>
+                  <p className="text-sky-100 mb-4">{assessmentData.position}</p>
+                  <div className="flex items-center gap-6 text-sm">
+                    <span className="flex items-center gap-1">
+                      <HelpCircle className="w-4 h-4" />
+                      {questions.length} Soal
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <Timer className="w-4 h-4" />
+                      {assessmentData.duration} Menit
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <Award className="w-4 h-4" />
+                      {totalPoints} Poin
+                    </span>
+                  </div>
+                </div>
+
+                {/* Progress */}
+                <div className="mb-6">
+                  <div className="flex items-center justify-between text-sm mb-2">
+                    <span className="text-gray-600">
+                      Soal {previewCurrentQuestion + 1} dari {questions.length}
+                    </span>
+                    <span className="text-sky-600 font-medium">
+                      {Math.round(((previewCurrentQuestion + 1) / questions.length) * 100)}%
+                    </span>
+                  </div>
+                  <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div
+                      className="bg-sky-500 h-2 rounded-full transition-all duration-300"
+                      style={{ width: `${((previewCurrentQuestion + 1) / questions.length) * 100}%` }}
+                    />
+                  </div>
+                </div>
+
+                {/* Question Card */}
+                {questions[previewCurrentQuestion] && (
+                  <div className="bg-white rounded-2xl border border-gray-200 p-6 mb-6">
+                    <div className="flex items-center gap-2 mb-4">
+                      <span className="w-8 h-8 bg-sky-100 rounded-lg flex items-center justify-center text-sky-600 font-bold text-sm">
+                        {previewCurrentQuestion + 1}
+                      </span>
+                      <span className="px-2 py-0.5 rounded-md text-xs font-medium bg-sky-50 text-sky-600">
+                        {questions[previewCurrentQuestion].type}
+                      </span>
+                      <span className="px-2 py-0.5 rounded-md text-xs font-medium bg-gray-100 text-gray-600">
+                        {questions[previewCurrentQuestion].points} poin
+                      </span>
+                    </div>
+
+                    <p className="text-gray-900 font-medium text-lg mb-6">
+                      {questions[previewCurrentQuestion].question}
+                    </p>
+
+                    {/* Options for Multiple Choice */}
+                    {questions[previewCurrentQuestion].type === "Pilihan Ganda" &&
+                      questions[previewCurrentQuestion].options && (
+                        <div className="space-y-3">
+                          {questions[previewCurrentQuestion].options!.map((option, i) => (
+                            <label
+                              key={i}
+                              className={`flex items-center gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all ${
+                                previewAnswers[questions[previewCurrentQuestion].id] === option
+                                  ? "border-sky-500 bg-sky-50"
+                                  : "border-gray-200 hover:border-sky-300 hover:bg-gray-50"
+                              }`}
+                            >
+                              <div
+                                className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
+                                  previewAnswers[questions[previewCurrentQuestion].id] === option
+                                    ? "border-sky-500 bg-sky-500"
+                                    : "border-gray-300"
+                                }`}
+                              >
+                                {previewAnswers[questions[previewCurrentQuestion].id] === option && (
+                                  <div className="w-2 h-2 bg-white rounded-full" />
+                                )}
+                              </div>
+                              <span className="text-gray-700">{option}</span>
+                            </label>
+                          ))}
+                        </div>
+                      )}
+
+                    {/* Essay Input */}
+                    {questions[previewCurrentQuestion].type === "Essay" && (
+                      <textarea
+                        placeholder="Tuliskan jawaban Anda di sini..."
+                        rows={5}
+                        value={previewAnswers[questions[previewCurrentQuestion].id] || ""}
+                        onChange={(e) =>
+                          setPreviewAnswers({
+                            ...previewAnswers,
+                            [questions[previewCurrentQuestion].id]: e.target.value,
+                          })
+                        }
+                        className="w-full px-4 py-3 rounded-xl border border-gray-200 outline-none focus:ring-2 focus:ring-sky-500 text-sm resize-none"
+                      />
+                    )}
+
+                    {/* Coding Challenge Input */}
+                    {questions[previewCurrentQuestion].type === "Coding Challenge" && (
+                      <div>
+                        <div className="bg-gray-900 rounded-xl p-4 mb-3">
+                          <div className="flex items-center gap-2 mb-3">
+                            <div className="w-3 h-3 rounded-full bg-red-500" />
+                            <div className="w-3 h-3 rounded-full bg-yellow-500" />
+                            <div className="w-3 h-3 rounded-full bg-green-500" />
+                          </div>
+                          <textarea
+                            placeholder="// Tuliskan kode Anda di sini..."
+                            rows={8}
+                            value={previewAnswers[questions[previewCurrentQuestion].id] || ""}
+                            onChange={(e) =>
+                              setPreviewAnswers({
+                                ...previewAnswers,
+                                [questions[previewCurrentQuestion].id]: e.target.value,
+                              })
+                            }
+                            className="w-full bg-transparent text-green-400 font-mono text-sm outline-none resize-none"
+                          />
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {/* Question Navigation */}
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {questions.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setPreviewCurrentQuestion(i)}
+                      className={`w-10 h-10 rounded-lg font-medium text-sm transition-all ${
+                        i === previewCurrentQuestion
+                          ? "bg-sky-500 text-white shadow-md"
+                          : previewAnswers[questions[i].id]
+                          ? "bg-green-100 text-green-700"
+                          : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                      }`}
+                    >
+                      {i + 1}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Preview Footer */}
+              <div className="flex items-center justify-between p-6 border-t border-gray-100 bg-gray-50">
+                <button
+                  onClick={() => setPreviewCurrentQuestion(Math.max(0, previewCurrentQuestion - 1))}
+                  disabled={previewCurrentQuestion === 0}
+                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl font-medium text-gray-600 hover:bg-gray-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  <ArrowLeft className="w-4 h-4" />
+                  Sebelumnya
+                </button>
+
+                {previewCurrentQuestion === questions.length - 1 ? (
+                  <button
+                    onClick={() => setShowPreviewModal(false)}
+                    className="flex items-center gap-2 bg-green-500 text-white px-6 py-2.5 rounded-xl font-semibold hover:bg-green-600 transition-all shadow-md"
+                  >
+                    <CheckCircle2 className="w-4 h-4" />
+                    Selesai Preview
+                  </button>
+                ) : (
+                  <button
+                    onClick={() =>
+                      setPreviewCurrentQuestion(Math.min(questions.length - 1, previewCurrentQuestion + 1))
+                    }
+                    className="flex items-center gap-2 bg-sky-500 text-white px-6 py-2.5 rounded-xl font-semibold hover:bg-sky-600 transition-all shadow-md"
+                  >
+                    Selanjutnya
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+                )}
               </div>
             </div>
           </div>
