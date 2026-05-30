@@ -18,17 +18,17 @@ export default function Hero() {
   return (
     <section className="relative overflow-hidden">
       <div className="absolute inset-0 gradient-hero opacity-10"></div>
-      <div className="absolute top-20 right-20 w-72 h-72 bg-sky-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
-      <div className="absolute bottom-20 left-20 w-72 h-72 bg-green-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
+      <div className="absolute top-16 right-4 sm:right-20 w-40 sm:w-72 h-40 sm:h-72 bg-sky-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
+      <div className="absolute bottom-16 left-4 sm:left-20 w-40 sm:w-72 h-40 sm:h-72 bg-green-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32 relative z-10">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 md:py-32 relative z-10">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           <div>
             <span className="inline-flex items-center gap-2 bg-sky-100 text-sky-700 px-4 py-2 rounded-full text-sm font-semibold mb-6">
               <Rocket className="w-4 h-4" />
               Platform #1 Lowongan Kerja Indonesia
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
               Wujudkan Karir{" "}
               <span className="text-transparent bg-clip-text gradient-hero">
                 Impianmu
@@ -59,13 +59,13 @@ export default function Hero() {
                     className="w-full py-3 outline-none text-gray-700"
                   />
                 </div>
-                <Link href="/lowongan" className="gradient-sky text-white px-8 py-3 rounded-xl font-semibold hover:opacity-90 transition-all shadow-md">
+                <Link href="/lowongan" className="gradient-sky text-white px-8 py-3 rounded-xl font-semibold hover:opacity-90 transition-all shadow-md text-center">
                   Cari
                 </Link>
               </div>
             </div>
             
-            <div className="flex items-center gap-6 mt-6 text-sm text-gray-500">
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mt-6 text-sm text-gray-500">
               <span className="flex items-center gap-2">
                 <span className="w-2 h-2 bg-green-500 rounded-full"></span>
                 10,000+ Lowongan Aktif

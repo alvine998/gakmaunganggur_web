@@ -232,8 +232,8 @@ export default function CariKandidat() {
         {/* Hero Section */}
         <section className="relative overflow-hidden bg-gradient-to-br from-sky-50 to-green-50">
           <div className="absolute inset-0 gradient-hero opacity-10"></div>
-          <div className="absolute top-20 right-20 w-72 h-72 bg-sky-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
-          <div className="absolute bottom-20 left-20 w-72 h-72 bg-green-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
+          <div className="absolute top-16 right-4 sm:right-20 w-40 sm:w-72 h-40 sm:h-72 bg-sky-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
+          <div className="absolute bottom-16 left-4 sm:left-20 w-40 sm:w-72 h-40 sm:h-72 bg-green-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 relative z-10">
             <div className="text-center max-w-3xl mx-auto">
@@ -241,13 +241,13 @@ export default function CariKandidat() {
                 <Users className="w-4 h-4" />
                 Untuk Perusahaan
               </span>
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
                 Cari Kandidat{" "}
                 <span className="text-transparent bg-clip-text gradient-hero">
                   Terbaik
                 </span>
               </h1>
-              <p className="text-lg text-gray-600 leading-relaxed mb-8">
+              <p className="text-base sm:text-lg text-gray-600 leading-relaxed mb-8">
                 Temukan talenta berkualitas yang sesuai dengan kebutuhan perusahaan Anda
               </p>
 
@@ -344,8 +344,8 @@ export default function CariKandidat() {
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-col lg:flex-row gap-8">
             {/* Filter Sidebar */}
-            <div className="lg:w-72 flex-shrink-0">
-              <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden sticky top-24">
+              <div className="w-full lg:w-72 lg:flex-shrink-0">
+              <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden lg:sticky lg:top-24">
                 <button
                   onClick={() => setShowFilters(!showFilters)}
                   className="w-full flex items-center justify-between p-5 border-b border-gray-100"
@@ -477,8 +477,8 @@ export default function CariKandidat() {
             </div>
 
             {/* Candidate Grid */}
-            <div className="flex-1">
-              <div className="flex items-center justify-between mb-6">
+            <div className="flex-1 min-w-0">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-6">
                 <p className="text-gray-600">
                   Menampilkan <span className="font-semibold text-gray-900">{filteredCandidates.length}</span> kandidat
                 </p>
@@ -494,7 +494,7 @@ export default function CariKandidat() {
                 {filteredCandidates.map((candidate) => (
                   <div
                     key={candidate.id}
-                    className="bg-white rounded-2xl border border-gray-100 p-6 hover:shadow-card-hover transition-all group"
+                    className="bg-white rounded-2xl border border-gray-100 p-4 sm:p-6 hover:shadow-card-hover transition-all group"
                   >
                     <div className="flex items-start gap-4 mb-4">
                       <div className="w-14 h-14 rounded-xl bg-gray-100 flex-shrink-0 overflow-hidden">
@@ -509,8 +509,8 @@ export default function CariKandidat() {
                         />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <div className="flex items-start justify-between">
-                          <div>
+                        <div className="flex items-start justify-between gap-3">
+                          <div className="min-w-0">
                             <h3 className="font-bold text-gray-900 group-hover:text-sky-600 transition-colors">
                               {candidate.name}
                             </h3>
@@ -529,7 +529,7 @@ export default function CariKandidat() {
                             />
                           </button>
                         </div>
-                        <div className="flex items-center gap-3 mt-2 text-sm text-gray-500">
+                        <div className="flex flex-wrap items-center gap-x-3 gap-y-2 mt-2 text-sm text-gray-500">
                           <span className="flex items-center gap-1">
                             <MapPin className="w-3.5 h-3.5" />
                             {candidate.location}
@@ -584,12 +584,12 @@ export default function CariKandidat() {
                     </div>
 
                     {/* Stats */}
-                    <div className="grid grid-cols-3 gap-3 mb-4 bg-gray-50 rounded-xl p-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4 bg-gray-50 rounded-xl p-3">
                       <div className="text-center">
                         <p className="text-sm font-bold text-gray-900">{candidate.projectsCompleted}</p>
                         <p className="text-xs text-gray-500">Proyek</p>
                       </div>
-                      <div className="text-center border-x border-gray-200">
+                      <div className="text-center sm:border-x border-gray-200">
                         <p className="text-sm font-bold text-gray-900">{candidate.responseRate}</p>
                         <p className="text-xs text-gray-500">Response</p>
                       </div>
@@ -634,8 +634,8 @@ export default function CariKandidat() {
         {/* Profile Modal */}
         {viewingCandidate && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50">
-            <div className="bg-white rounded-3xl max-w-2xl w-full max-h-[85vh] overflow-y-auto">
-              <div className="sticky top-0 bg-white border-b border-gray-100 p-6 flex items-center justify-between rounded-t-3xl">
+              <div className="bg-white rounded-3xl max-w-2xl w-full max-h-[85vh] overflow-y-auto">
+              <div className="sticky top-0 bg-white border-b border-gray-100 p-4 sm:p-6 flex items-center justify-between rounded-t-3xl">
                 <h3 className="text-xl font-bold text-gray-900">Profil Kandidat</h3>
                 <button
                   onClick={() => setViewingCandidate(null)}
@@ -645,9 +645,9 @@ export default function CariKandidat() {
                 </button>
               </div>
 
-              <div className="p-6">
+              <div className="p-4 sm:p-6">
                 {/* Header */}
-                <div className="flex items-start gap-4 mb-6">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-start mb-6">
                   <div className="w-20 h-20 rounded-2xl bg-gray-100 flex-shrink-0 overflow-hidden">
                     <img
                       src={viewingCandidate.avatar}
@@ -658,7 +658,7 @@ export default function CariKandidat() {
                   <div>
                     <h4 className="text-2xl font-bold text-gray-900">{viewingCandidate.name}</h4>
                     <p className="text-sky-600 font-medium">{viewingCandidate.role}</p>
-                    <div className="flex items-center gap-3 mt-2 text-sm text-gray-500">
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-2 mt-2 text-sm text-gray-500">
                       <span className="flex items-center gap-1"><MapPin className="w-4 h-4" /> {viewingCandidate.location}</span>
                       <span className="flex items-center gap-1"><Briefcase className="w-4 h-4" /> {viewingCandidate.experience}</span>
                     </div>
@@ -666,7 +666,7 @@ export default function CariKandidat() {
                 </div>
 
                 {/* Rating & Price */}
-                <div className="flex items-center gap-4 mb-6">
+                <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-6">
                   <div className="flex items-center gap-1 bg-green-50 px-4 py-2 rounded-xl">
                     <Star className="w-5 h-5 text-green-600 fill-green-600" />
                     <span className="font-bold text-green-700">{viewingCandidate.rating}</span>
@@ -716,12 +716,12 @@ export default function CariKandidat() {
                 </div>
 
                 {/* Stats */}
-                <div className="grid grid-cols-3 gap-4 mb-6 bg-gray-50 rounded-2xl p-5">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6 bg-gray-50 rounded-2xl p-5">
                   <div className="text-center">
                     <p className="text-2xl font-bold text-gray-900">{viewingCandidate.projectsCompleted}</p>
                     <p className="text-sm text-gray-500">Proyek Selesai</p>
                   </div>
-                  <div className="text-center border-x border-gray-200">
+                  <div className="text-center sm:border-x border-gray-200">
                     <p className="text-2xl font-bold text-gray-900">{viewingCandidate.responseRate}</p>
                     <p className="text-sm text-gray-500">Tingkat Response</p>
                   </div>
@@ -732,7 +732,7 @@ export default function CariKandidat() {
                 </div>
 
                 {/* Actions */}
-                <div className="flex gap-3">
+                <div className="flex flex-col gap-3 sm:flex-row">
                   <button className="flex-1 gradient-sky text-white py-3 rounded-xl font-semibold hover:opacity-90 transition-all shadow-md flex items-center justify-center gap-2">
                     <ExternalLink className="w-5 h-5" />
                     Hubungi Kandidat
@@ -760,23 +760,23 @@ export default function CariKandidat() {
 
         {/* CTA Section */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="bg-gradient-to-r from-sky-500 to-green-500 rounded-3xl p-12 md:p-16 relative overflow-hidden">
+          <div className="bg-gradient-to-r from-sky-500 to-green-500 rounded-3xl p-6 sm:p-10 md:p-16 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2"></div>
 
             <div className="relative text-center">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6">
                 Ingin Merekrut Lebih Cepat?
               </h2>
-              <p className="text-sky-100 text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-sky-100 text-base sm:text-lg mb-8 max-w-2xl mx-auto">
                 Dapatkan akses ke kandidat eksklusif dan fitur pencarian lanjutan dengan paket enterprise kami
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-white text-sky-600 hover:bg-sky-50 px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
+                <button className="bg-white text-sky-600 hover:bg-sky-50 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
                   <Building2 className="w-5 h-5" />
                   Upgrade ke Enterprise
                 </button>
-                <button className="bg-transparent border-2 border-white text-white hover:bg-white/10 px-8 py-4 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-2">
+                <button className="bg-transparent border-2 border-white text-white hover:bg-white/10 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg transition-all flex items-center justify-center gap-2">
                   Pelajari Lebih Lanjut
                 </button>
               </div>

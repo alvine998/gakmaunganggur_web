@@ -221,7 +221,7 @@ export default function CompanySupport() {
           <h2 className="text-lg font-bold text-gray-900 mb-6">Riwayat Tiket</h2>
 
           <div className="overflow-x-auto">
-            <table className="w-full">
+            <table className="w-full min-w-[640px]">
               <thead>
                 <tr className="border-b border-gray-100">
                   <th className="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider pb-3">ID</th>

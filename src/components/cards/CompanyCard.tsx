@@ -31,8 +31,8 @@ interface CompanyCardProps {
 export default function CompanyCard({ company, variant = "default" }: CompanyCardProps) {
   if (variant === "featured") {
     return (
-      <div className="bg-white rounded-2xl p-6 border border-gray-100 hover:shadow-card-hover transition-all cursor-pointer group">
-        <div className="flex items-start gap-4">
+      <div className="bg-white rounded-2xl p-4 sm:p-6 border border-gray-100 hover:shadow-card-hover transition-all cursor-pointer group">
+        <div className="flex items-start gap-3 sm:gap-4">
           <div className="w-16 h-16 rounded-xl bg-gray-100 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
             <img
               src={company.logo}
@@ -44,8 +44,8 @@ export default function CompanyCard({ company, variant = "default" }: CompanyCar
               }}
             />
           </div>
-          <div className="flex-1">
-            <div className="flex items-center gap-2 mb-1">
+          <div className="flex-1 min-w-0">
+            <div className="flex flex-wrap items-center gap-2 mb-1">
               <h3 className="text-lg font-semibold text-gray-900 group-hover:text-sky-600 transition-colors">
                 {company.name}
               </h3>
@@ -58,7 +58,7 @@ export default function CompanyCard({ company, variant = "default" }: CompanyCar
               {company.industry}
             </p>
           </div>
-          <div className="flex items-center gap-1 bg-yellow-50 px-2 py-1 rounded-lg">
+          <div className="flex flex-shrink-0 items-center gap-1 bg-yellow-50 px-2 py-1 rounded-lg">
             <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
             <span className="text-sm font-medium text-gray-700">{company.rating}</span>
           </div>
@@ -66,7 +66,7 @@ export default function CompanyCard({ company, variant = "default" }: CompanyCar
         
         <p className="text-gray-600 text-sm mt-4 line-clamp-2">{company.description}</p>
         
-        <div className="flex flex-wrap items-center gap-4 mt-4 text-sm text-gray-500">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-4 text-sm text-gray-500">
           <span className="flex items-center gap-1">
             <MapPinned className="w-4 h-4" />
             {company.location}
@@ -100,7 +100,7 @@ export default function CompanyCard({ company, variant = "default" }: CompanyCar
   }
 
   return (
-    <div className="bg-white rounded-2xl p-6 border border-gray-100 hover:shadow-card-hover transition-all cursor-pointer group">
+    <div className="bg-white rounded-2xl p-4 sm:p-6 border border-gray-100 hover:shadow-card-hover transition-all cursor-pointer group">
       <div className="flex items-center gap-4 mb-4">
         <div className="w-14 h-14 rounded-xl bg-gray-100 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
           <img
@@ -113,8 +113,8 @@ export default function CompanyCard({ company, variant = "default" }: CompanyCar
             }}
           />
         </div>
-        <div>
-          <div className="flex items-center gap-2">
+        <div className="min-w-0">
+          <div className="flex flex-wrap items-center gap-2">
             <h3 className="font-semibold text-gray-900 group-hover:text-sky-600 transition-colors">
               {company.name}
             </h3>
@@ -128,7 +128,7 @@ export default function CompanyCard({ company, variant = "default" }: CompanyCar
       
       <p className="text-gray-600 text-sm mb-4 line-clamp-2">{company.description}</p>
       
-      <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-500 mb-4">
         <span className="flex items-center gap-1">
           <MapPin className="w-4 h-4" />
           {company.location}
@@ -147,7 +147,7 @@ export default function CompanyCard({ company, variant = "default" }: CompanyCar
         ))}
       </div>
       
-      <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between pt-4 border-t border-gray-100">
         <span className="text-sky-600 font-medium text-sm flex items-center gap-1">
           <Briefcase className="w-4 h-4" />
           {company.jobs} lowongan

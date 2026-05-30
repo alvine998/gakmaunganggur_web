@@ -139,7 +139,7 @@ export default function CompanyUsersPage() {
           </div>
           <button
             onClick={openAddModal}
-            className="inline-flex items-center gap-2 bg-sky-500 text-white px-5 py-2.5 rounded-xl font-semibold hover:bg-sky-600 transition-colors shadow-md"
+            className="inline-flex w-full sm:w-auto items-center justify-center gap-2 bg-sky-500 text-white px-5 py-2.5 rounded-xl font-semibold hover:bg-sky-600 transition-colors shadow-md"
           >
             <UserPlus className="w-5 h-5" />
             Tambah Pengguna
@@ -149,7 +149,7 @@ export default function CompanyUsersPage() {
         {/* Search */}
         <div className="bg-white rounded-2xl border border-gray-100 shadow-sm">
           <div className="p-4 border-b border-gray-100">
-            <div className="relative max-w-md">
+            <div className="relative max-w-md sm:max-w-md">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
               <input
                 type="text"
@@ -171,7 +171,7 @@ export default function CompanyUsersPage() {
 
           {/* Table */}
           <div className="overflow-x-auto">
-            <table className="w-full">
+            <table className="w-full min-w-[720px]">
               <thead>
                 <tr className="border-b border-gray-100">
                   <th className="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-4">

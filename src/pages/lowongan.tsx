@@ -182,7 +182,7 @@ export default function Lowongan() {
                     className="w-full py-3 outline-none text-gray-700"
                   />
                 </div>
-                <button className="gradient-sky text-white px-8 py-3 rounded-xl font-semibold hover:opacity-90 transition-all shadow-md">
+                <button className="gradient-sky text-white px-8 py-3 rounded-xl font-semibold hover:opacity-90 transition-all shadow-md text-center">
                   Cari
                 </button>
               </div>
@@ -196,12 +196,12 @@ export default function Lowongan() {
             <FilterSidebar filters={filters} />
 
             {/* Job Listings */}
-            <div className="flex-1">
-              <div className="flex items-center justify-between mb-6">
+            <div className="flex-1 min-w-0">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-6">
                 <p className="text-gray-600">
                   Menampilkan <span className="font-semibold text-gray-900">{jobs.length}</span> lowongan
                 </p>
-                <div className="flex items-center gap-4">
+                <div className="flex items-center justify-between gap-4 sm:justify-start">
                   <div className="hidden sm:flex items-center gap-2">
                     <span className="text-sm text-gray-500">Urutkan:</span>
                     <select className="text-sm font-medium text-gray-700 bg-transparent border-none outline-none cursor-pointer">

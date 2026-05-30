@@ -173,7 +173,7 @@ export default function TipsKarir() {
                 <BookOpen className="w-4 h-4" />
                 Tips Karir
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6">
                 Tips Karir untuk{" "}
                 <span className="text-sky-600">Kesuksesanmu</span>
               </h1>
@@ -199,7 +199,7 @@ export default function TipsKarir() {
         {/* Stats */}
         <section className="py-12 bg-white border-b border-gray-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
               {stats.map((stat, i) => (
                 <div key={i} className="text-center">
                   <p className="text-3xl md:text-4xl font-bold text-gray-900 mb-1">
@@ -238,7 +238,7 @@ export default function TipsKarir() {
                     </span>
                   </div>
                 </div>
-                <div className="p-8 md:p-12 flex flex-col justify-center">
+                <div className="p-5 sm:p-8 md:p-12 flex flex-col justify-center">
                   <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
                     <span className="flex items-center gap-1">
                       <Tag className="w-4 h-4" />
@@ -397,7 +397,7 @@ export default function TipsKarir() {
               <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
               <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2"></div>
 
-              <div className="relative grid md:grid-cols-2 gap-8 items-center">
+              <div className="relative grid md:grid-cols-2 gap-6 md:gap-8 items-center">
                 <div>
                   <div className="inline-flex items-center gap-2 bg-white/20 text-white px-4 py-2 rounded-full text-sm font-medium mb-4">
                     <Mail className="w-4 h-4" />
@@ -445,7 +445,7 @@ export default function TipsKarir() {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
               {[
                 { name: "Rina Wijaya", role: "HR Manager", articles: 24, avatar: "https://i.pravatar.cc/150?img=1" },
                 { name: "Dimas Pratama", role: "Career Coach", articles: 18, avatar: "https://i.pravatar.cc/150?img=3" },
@@ -516,15 +516,15 @@ export default function TipsKarir() {
         {/* CTA */}
         <section className="py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-gradient-to-r from-sky-500 to-green-500 rounded-3xl p-12 md:p-16 relative overflow-hidden">
+            <div className="bg-gradient-to-r from-sky-500 to-green-500 rounded-3xl p-6 sm:p-10 md:p-16 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
               <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2"></div>
 
               <div className="relative text-center">
-                <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6">
                   Siap Memulai Karir Impianmu?
                 </h2>
-                <p className="text-sky-100 text-lg mb-8 max-w-2xl mx-auto">
+                <p className="text-sky-100 text-base sm:text-lg mb-8 max-w-2xl mx-auto">
                   Temukan lowongan kerja terbaik dan bangun karir impianmu
                   bersama KerjaAjaDulu.com
                 </p>
@@ -532,14 +532,14 @@ export default function TipsKarir() {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link
                     href="/lowongan"
-                    className="bg-white text-sky-600 hover:bg-sky-50 px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                    className="bg-white text-sky-600 hover:bg-sky-50 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
                   >
                     Cari Lowongan
                     <ArrowRight className="w-5 h-5" />
                   </Link>
                   <Link
                     href="/register"
-                    className="bg-transparent border-2 border-white text-white hover:bg-white/10 px-8 py-4 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-2"
+                    className="bg-transparent border-2 border-white text-white hover:bg-white/10 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg transition-all flex items-center justify-center gap-2"
                   >
                     Daftar Gratis
                   </Link>

@@ -173,7 +173,7 @@ export default function Perusahaan() {
           className="bg-gradient-to-br from-sky-50 to-green-50"
         >
           <div className="mt-8 bg-white p-2 rounded-2xl shadow-lg border border-gray-100 max-w-2xl mx-auto">
-            <div className="flex gap-2">
+            <div className="flex flex-col gap-2 sm:flex-row">
               <div className="flex-1 flex items-center gap-3 px-4">
                 <Search className="w-5 h-5 text-gray-400 flex-shrink-0" />
                 <input
@@ -223,7 +223,7 @@ export default function Perusahaan() {
 
         {/* All Companies */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between mb-6">
             <h2 className="text-2xl font-bold text-gray-900">Semua Perusahaan</h2>
             <p className="text-gray-500">{companies.length} perusahaan</p>
           </div>
@@ -239,19 +239,19 @@ export default function Perusahaan() {
 
         {/* CTA Section */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="bg-gradient-to-r from-sky-500 to-green-500 rounded-3xl p-12 md:p-16 relative overflow-hidden">
+          <div className="bg-gradient-to-r from-sky-500 to-green-500 rounded-3xl p-6 sm:p-10 md:p-16 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2"></div>
             
             <div className="relative text-center">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6">
                 Perusahaan Kamu?
               </h2>
-              <p className="text-sky-100 text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-sky-100 text-base sm:text-lg mb-8 max-w-2xl mx-auto">
                 Pasang lowongan di KerjaAjaDulu.com dan temukan talenta terbaik untuk tim kamu
               </p>
               
-              <Link href="/register" className="bg-white text-sky-600 hover:bg-sky-50 px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2 mx-auto">
+              <Link href="/register" className="bg-white text-sky-600 hover:bg-sky-50 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2 mx-auto">
                 <Building2 className="w-5 h-5" />
                 Pasang Lowongan Sekarang
               </Link>

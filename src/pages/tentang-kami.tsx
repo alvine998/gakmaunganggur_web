@@ -106,8 +106,8 @@ const timelineData = [
 
 const team = [
   {
-    name: "Ahmad Fauzi",
-    role: "CEO & Co-founder",
+    name: "Alvine Yoga Pratama",
+    role: "CEO & Founder",
     image: "https://i.pravatar.cc/300?img=11",
   },
   {
@@ -159,7 +159,7 @@ export default function TentangKami() {
         {/* Stats */}
         <section className="py-12 bg-white border-b border-gray-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
               {stats.map((stat, i) => (
                 <div key={i} className="text-center">
                   <p className="text-3xl md:text-4xl font-bold text-gray-900 mb-1">{stat.value}</p>
@@ -269,24 +269,24 @@ export default function TentangKami() {
         {/* CTA */}
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-gradient-to-r from-sky-500 to-green-500 rounded-3xl p-12 md:p-16 relative overflow-hidden">
+            <div className="bg-gradient-to-r from-sky-500 to-green-500 rounded-3xl p-6 sm:p-10 md:p-16 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
               <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2"></div>
               
               <div className="relative text-center">
-                <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6">
                   Bergabung Bersama Kami
                 </h2>
-                <p className="text-sky-100 text-lg mb-8 max-w-2xl mx-auto">
+                <p className="text-sky-100 text-base sm:text-lg mb-8 max-w-2xl mx-auto">
                   Jadilah bagian dari perubahan positif di dunia kerja Indonesia
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link href="/lowongan" className="bg-white text-sky-600 hover:bg-sky-50 px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
+                  <Link href="/lowongan" className="bg-white text-sky-600 hover:bg-sky-50 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
                     Cari Lowongan
                     <ArrowRight className="w-5 h-5" />
                   </Link>
-                  <Link href="/perusahaan" className="bg-transparent border-2 border-white text-white hover:bg-white/10 px-8 py-4 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-2">
+                  <Link href="/perusahaan" className="bg-transparent border-2 border-white text-white hover:bg-white/10 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg transition-all flex items-center justify-center gap-2">
                     Untuk Perusahaan
                   </Link>
                 </div>

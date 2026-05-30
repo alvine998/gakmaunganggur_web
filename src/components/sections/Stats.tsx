@@ -12,7 +12,7 @@ export default function Stats() {
     <section className="py-20 gradient-hero relative overflow-hidden">
       <div className="absolute inset-0 bg-black/10"></div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
           {stats.map((stat, index) => {
             const Icon = stat.icon;
             return (
@@ -20,7 +20,7 @@ export default function Stats() {
                 <div className="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <Icon className="w-7 h-7 text-white" />
                 </div>
-                <div className="text-4xl md:text-5xl font-bold text-white mb-2">{stat.value}</div>
+                <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2">{stat.value}</div>
                 <div className="text-sky-100 font-medium">{stat.label}</div>
               </div>
             );

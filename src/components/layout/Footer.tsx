@@ -50,8 +50,8 @@ export default function Footer() {
                   <span className="text-white font-bold text-xl">G</span>
                 </div>
               </Link>
-              <Link href="/">
-                <span className="text-xl font-bold cursor-pointer">KerjaAjaDulu.com</span>
+              <Link href="/" className="min-w-0">
+                <span className="block truncate text-lg sm:text-xl font-bold cursor-pointer">KerjaAjaDulu.com</span>
               </Link>
             </div>
             <p className="text-gray-400 mb-6 leading-relaxed">
@@ -94,7 +94,7 @@ export default function Footer() {
           <p className="text-gray-400 text-sm">
             © 2024 KerjaAjaDulu.com. All rights reserved.
           </p>
-          <div className="flex gap-6 text-sm text-gray-400">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-sm text-gray-400">
             <Link href="/syarat-ketentuan" className="hover:text-white transition-colors">Syarat & Ketentuan</Link>
             <Link href="/kebijakan-privasi" className="hover:text-white transition-colors">Kebijakan Privasi</Link>
             <Link href="/cookie-policy" className="hover:text-white transition-colors">Cookie Policy</Link>

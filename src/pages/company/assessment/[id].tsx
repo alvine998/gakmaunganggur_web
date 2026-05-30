@@ -401,14 +401,14 @@ export default function DetailAssessment() {
               Kembali ke Assessment
             </Link>
 
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <h1 className="text-3xl font-bold text-gray-900 mb-2">
                   {assessmentData.title}
                 </h1>
                 <p className="text-gray-500">{assessmentData.position}</p>
               </div>
-              <div className="flex items-center gap-3">
+              <div className="flex flex-wrap items-center gap-3">
                 <span
                   className={`px-3 py-1 rounded-full text-xs font-semibold ${
                     assessmentData.status === "Active"
@@ -424,14 +424,14 @@ export default function DetailAssessment() {
                     setPreviewAnswers({});
                     setShowPreviewModal(true);
                   }}
-                  className="flex items-center gap-2 bg-gray-100 text-gray-700 px-5 py-2.5 rounded-xl font-semibold hover:bg-gray-200 transition-all"
+                  className="flex flex-1 sm:flex-none items-center justify-center gap-2 bg-gray-100 text-gray-700 px-5 py-2.5 rounded-xl font-semibold hover:bg-gray-200 transition-all"
                 >
                   <Eye className="w-4 h-4" />
                   Preview
                 </button>
                 <button
                   onClick={() => setShowEditAssessmentModal(true)}
-                  className="flex items-center gap-2 bg-sky-500 text-white px-5 py-2.5 rounded-xl font-semibold hover:bg-sky-600 transition-all shadow-md"
+                  className="flex flex-1 sm:flex-none items-center justify-center gap-2 bg-sky-500 text-white px-5 py-2.5 rounded-xl font-semibold hover:bg-sky-600 transition-all shadow-md"
                 >
                   <Edit className="w-4 h-4" />
                   Edit Assessment
@@ -441,7 +441,7 @@ export default function DetailAssessment() {
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-4 gap-4 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mb-8">
             <div className="bg-white rounded-2xl border border-gray-100 p-5">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-sky-100 rounded-xl flex items-center justify-center">
@@ -489,7 +489,7 @@ export default function DetailAssessment() {
           </div>
 
           {/* Tabs */}
-          <div className="flex gap-2 mb-6 border-b border-gray-200">
+          <div className="flex gap-2 mb-6 overflow-x-auto border-b border-gray-200">
             <button
               onClick={() => setActiveTab("questions")}
               className={`px-5 py-3 font-medium border-b-2 transition-colors ${
@@ -521,7 +521,7 @@ export default function DetailAssessment() {
           {/* Questions Tab */}
           {activeTab === "questions" && (
             <div>
-              <div className="flex items-center justify-between mb-6">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-6">
                 <p className="text-gray-500 flex items-center gap-2">
                   <GripVertical className="w-4 h-4" />
                   Seret untuk mengubah urutan soal
@@ -531,7 +531,7 @@ export default function DetailAssessment() {
                     resetQuestionForm();
                     setShowAddModal(true);
                   }}
-                  className="flex items-center gap-2 bg-sky-500 text-white px-4 py-2.5 rounded-xl font-semibold hover:bg-sky-600 transition-all shadow-md text-sm"
+                  className="flex w-full sm:w-auto items-center justify-center gap-2 bg-sky-500 text-white px-4 py-2.5 rounded-xl font-semibold hover:bg-sky-600 transition-all shadow-md text-sm"
                 >
                   <Plus className="w-4 h-4" />
                   Tambah Soal
@@ -558,18 +558,18 @@ export default function DetailAssessment() {
           {/* Participants Tab */}
           {activeTab === "participants" && (
             <div>
-              <div className="flex items-center justify-between mb-6">
+              <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between mb-6">
                 <div className="flex items-center gap-3">
-                  <div className="relative">
+                  <div className="relative w-full sm:w-auto">
                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                     <input
                       type="text"
                       placeholder="Cari peserta..."
-                      className="pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 w-64"
+                      className="w-full sm:w-64 pl-10 pr-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500"
                     />
                   </div>
                 </div>
-                <div className="flex items-center gap-3 text-sm">
+                <div className="flex flex-wrap items-center gap-3 text-sm">
                   <span className="flex items-center gap-1 text-green-600">
                     <CheckCircle2 className="w-4 h-4" />
                     {participants.filter((p) => p.status === "Selesai").length} Selesai
@@ -581,8 +581,8 @@ export default function DetailAssessment() {
                 </div>
               </div>
 
-              <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden">
-                <table className="w-full">
+              <div className="bg-white rounded-2xl border border-gray-100 overflow-x-auto">
+                <table className="w-full min-w-[760px]">
                   <thead className="bg-gray-50 border-b border-gray-100">
                     <tr>
                       <th className="text-left px-6 py-4 text-sm font-semibold text-gray-600">Peserta</th>
@@ -1149,7 +1149,7 @@ export default function DetailAssessment() {
 
               {/* Score Summary */}
               <div className="p-6 border-b border-gray-100">
-                <div className="grid grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <div className="bg-gray-50 rounded-xl p-4 text-center">
                     <p className="text-3xl font-bold text-gray-900 mb-1">
                       {selectedParticipant.score}
@@ -1187,7 +1187,7 @@ export default function DetailAssessment() {
               {/* Assessment Info */}
               <div className="p-6 border-b border-gray-100">
                 <h4 className="font-semibold text-gray-900 mb-4">Informasi Assessment</h4>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 bg-sky-100 rounded-xl flex items-center justify-center">
                       <FileText className="w-5 h-5 text-sky-600" />

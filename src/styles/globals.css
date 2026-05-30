@@ -15,6 +15,11 @@ body {
   font-family: 'Inter', system-ui, sans-serif;
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

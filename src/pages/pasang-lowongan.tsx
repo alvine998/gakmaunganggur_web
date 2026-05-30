@@ -145,7 +145,7 @@ export default function PasangLowongan() {
           <Navbar />
 
           <div className="max-w-2xl mx-auto px-4 py-20 text-center">
-            <div className="bg-white rounded-3xl p-12 border border-gray-100 shadow-sm">
+            <div className="bg-white rounded-3xl p-6 sm:p-10 md:p-12 border border-gray-100 shadow-sm">
               <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
                 <CheckCircle2 className="w-10 h-10 text-green-600" />
               </div>
@@ -208,8 +208,8 @@ export default function PasangLowongan() {
         {/* Hero Section */}
         <section className="relative overflow-hidden bg-gradient-to-br from-sky-50 to-green-50">
           <div className="absolute inset-0 gradient-hero opacity-10"></div>
-          <div className="absolute top-20 right-20 w-72 h-72 bg-sky-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
-          <div className="absolute bottom-20 left-20 w-72 h-72 bg-green-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
+          <div className="absolute top-16 right-4 sm:right-20 w-40 sm:w-72 h-40 sm:h-72 bg-sky-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
+          <div className="absolute bottom-16 left-4 sm:left-20 w-40 sm:w-72 h-40 sm:h-72 bg-green-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 relative z-10">
             <div className="text-center max-w-3xl mx-auto">
@@ -217,13 +217,13 @@ export default function PasangLowongan() {
                 <Briefcase className="w-4 h-4" />
                 Untuk Perusahaan
               </span>
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
                 Pasang Lowongan,{" "}
                 <span className="text-transparent bg-clip-text gradient-hero">
                   Temukan Talenta Terbaik
                 </span>
               </h1>
-              <p className="text-lg text-gray-600 leading-relaxed">
+              <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
                 Jangkau ribuan kandidat berkualitas dan temukan orang yang tepat untuk tim Anda
               </p>
             </div>
@@ -234,7 +234,7 @@ export default function PasangLowongan() {
         <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           {/* Step Indicator */}
           <div className="mb-10">
-            <div className="flex items-center justify-between max-w-2xl mx-auto">
+            <div className="flex items-center justify-between max-w-2xl mx-auto overflow-hidden">
               {steps.map((step, index) => {
                 const Icon = step.icon;
                 const isActive = currentStep === step.id;
@@ -243,7 +243,7 @@ export default function PasangLowongan() {
                   <div key={step.id} className="flex items-center">
                     <div className="flex flex-col items-center">
                       <div
-                        className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all ${
+                        className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center transition-all ${
                           isActive
                             ? "gradient-hero text-white shadow-lg"
                             : isCompleted
@@ -267,7 +267,7 @@ export default function PasangLowongan() {
                     </div>
                     {index < steps.length - 1 && (
                       <div
-                        className={`w-16 sm:w-24 h-1 mx-2 rounded-full ${
+                        className={`w-8 sm:w-16 md:w-24 h-1 mx-1 sm:mx-2 rounded-full ${
                           currentStep > step.id ? "bg-green-500" : "bg-gray-200"
                         }`}
                       />
@@ -405,7 +405,7 @@ export default function PasangLowongan() {
               </h2>
 
               <div className="space-y-4">
-                <div className="flex gap-3">
+                <div className="flex flex-col gap-3 sm:flex-row">
                   <input
                     type="text"
                     value={newRequirement}
@@ -417,7 +417,7 @@ export default function PasangLowongan() {
                   <button
                     type="button"
                     onClick={addRequirement}
-                    className="gradient-sky text-white px-5 py-3 rounded-xl font-medium hover:opacity-90 transition-all shadow-md flex items-center gap-2"
+                    className="gradient-sky text-white px-5 py-3 rounded-xl font-medium hover:opacity-90 transition-all shadow-md flex items-center justify-center gap-2"
                   >
                     <Plus className="w-5 h-5" />
                     Tambah
@@ -464,7 +464,7 @@ export default function PasangLowongan() {
               </h2>
 
               <div className="space-y-4">
-                <div className="flex gap-3">
+                <div className="flex flex-col gap-3 sm:flex-row">
                   <input
                     type="text"
                     value={newBenefit}
@@ -476,7 +476,7 @@ export default function PasangLowongan() {
                   <button
                     type="button"
                     onClick={addBenefit}
-                    className="gradient-sky text-white px-5 py-3 rounded-xl font-medium hover:opacity-90 transition-all shadow-md flex items-center gap-2"
+                    className="gradient-sky text-white px-5 py-3 rounded-xl font-medium hover:opacity-90 transition-all shadow-md flex items-center justify-center gap-2"
                   >
                     <Plus className="w-5 h-5" />
                     Tambah
@@ -616,7 +616,7 @@ export default function PasangLowongan() {
           {/* Preview Modal */}
           {showPreview && (
             <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50">
-              <div className="bg-white rounded-3xl max-w-2xl w-full max-h-[80vh] overflow-y-auto p-8">
+              <div className="bg-white rounded-3xl max-w-2xl w-full max-h-[80vh] overflow-y-auto p-5 sm:p-8">
                 <div className="flex items-center justify-between mb-6">
                   <h3 className="text-xl font-bold text-gray-900">Preview Lowongan</h3>
                   <button
@@ -686,7 +686,7 @@ export default function PasangLowongan() {
           )}
 
           {/* Navigation Buttons */}
-          <div className="flex items-center justify-between mt-8">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between mt-8">
             <button
               type="button"
               onClick={() => setCurrentStep((prev) => Math.max(1, prev - 1))}
@@ -697,7 +697,7 @@ export default function PasangLowongan() {
               Sebelumnya
             </button>
 
-            <div className="flex gap-3">
+            <div className="flex flex-col gap-3 sm:flex-row">
               <button
                 type="button"
                 onClick={() => setShowPreview(true)}
@@ -732,20 +732,20 @@ export default function PasangLowongan() {
 
         {/* CTA Section */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="bg-gradient-to-r from-sky-500 to-green-500 rounded-3xl p-12 md:p-16 relative overflow-hidden">
+          <div className="bg-gradient-to-r from-sky-500 to-green-500 rounded-3xl p-6 sm:p-10 md:p-16 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2"></div>
 
             <div className="relative text-center">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6">
                 Butuh Bantuan?
               </h2>
-              <p className="text-sky-100 text-lg mb-8 max-w-2xl mx-auto">
+              <p className="text-sky-100 text-base sm:text-lg mb-8 max-w-2xl mx-auto">
                 Tim kami siap membantu Anda dalam memasang lowongan yang menarik kandidat berkualitas
               </p>
               <Link
                 href="/tentang-kami"
-                className="bg-white text-sky-600 hover:bg-sky-50 px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg hover:shadow-xl inline-flex items-center gap-2"
+                className="bg-white text-sky-600 hover:bg-sky-50 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg transition-all shadow-lg hover:shadow-xl inline-flex items-center justify-center gap-2"
               >
                 <Users className="w-5 h-5" />
                 Hubungi Kami

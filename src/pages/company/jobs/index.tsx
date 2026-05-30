@@ -163,7 +163,7 @@ export default function CompanyJobsPage() {
             </div>
             <Link
               href="/company/jobs/create"
-              className="inline-flex items-center gap-2 bg-sky-500 text-white px-5 py-2.5 rounded-xl font-semibold hover:bg-sky-600 transition-colors shadow-md"
+              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 bg-sky-500 text-white px-5 py-2.5 rounded-xl font-semibold hover:bg-sky-600 transition-colors shadow-md"
             >
               <Plus className="w-5 h-5" />
               Tambah Lowongan Baru
@@ -171,7 +171,7 @@ export default function CompanyJobsPage() {
           </div>
 
           {/* Stats Cards */}
-          <div className="grid grid-cols-4 gap-4 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mb-8">
             <div className="bg-white rounded-2xl border border-gray-100 p-5">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-sky-100 rounded-xl flex items-center justify-center">
@@ -251,7 +251,7 @@ export default function CompanyJobsPage() {
                 </div>
               </div>
 
-              <div className="flex items-center gap-2 mt-4">
+              <div className="flex items-center gap-2 mt-4 overflow-x-auto pb-1">
                 {filterTabs.map((tab) => (
                   <button
                     key={tab}
@@ -273,7 +273,7 @@ export default function CompanyJobsPage() {
 
             {/* Table */}
             <div className="overflow-x-auto">
-              <table className="w-full">
+              <table className="w-full min-w-[780px]">
                 <thead>
                   <tr className="border-b border-gray-100">
                     <th className="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-6 py-4">
@@ -386,13 +386,13 @@ export default function CompanyJobsPage() {
             {/* Pagination */}
             {filteredJobs.length > 0 && (
               <div className="px-6 py-4 border-t border-gray-100">
-                <div className="flex items-center justify-between">
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                   <p className="text-sm text-gray-500">
                     Menampilkan {(currentPage - 1) * itemsPerPage + 1}-
                     {Math.min(currentPage * itemsPerPage, filteredJobs.length)}{" "}
                     dari {filteredJobs.length} lowongan
                   </p>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 overflow-x-auto pb-1">
                     <button
                       onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                       disabled={currentPage === 1}

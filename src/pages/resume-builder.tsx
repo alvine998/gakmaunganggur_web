@@ -205,7 +205,7 @@ export default function ResumeBuilder() {
                   <Sparkles className="w-4 h-4" />
                   Resume Builder
                 </div>
-                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6">
                   Buat Resume{" "}
                   <span className="text-sky-600">Profesional</span>{" "}
                   dalam Hitungan Menit
@@ -218,19 +218,19 @@ export default function ResumeBuilder() {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link
                     href="#"
-                    className="bg-sky-500 hover:bg-sky-600 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2"
+                    className="bg-sky-500 hover:bg-sky-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2"
                   >
                     Mulai Buat Resume
                     <ArrowRight className="w-5 h-5" />
                   </Link>
                   <Link
                     href="#templates"
-                    className="bg-white border-2 border-gray-200 hover:border-sky-300 text-gray-700 hover:text-sky-700 px-8 py-4 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-2"
+                    className="bg-white border-2 border-gray-200 hover:border-sky-300 text-gray-700 hover:text-sky-700 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg transition-all flex items-center justify-center gap-2"
                   >
                     Lihat Template
                   </Link>
                 </div>
-                <div className="flex items-center gap-6 mt-8 text-sm text-gray-500">
+                <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mt-8 text-sm text-gray-500">
                   <span className="flex items-center gap-2">
                     <Check className="w-5 h-5 text-green-500" />
                     100% Gratis
@@ -281,7 +281,7 @@ export default function ResumeBuilder() {
         {/* Stats */}
         <section className="py-12 bg-white border-b border-gray-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
               {stats.map((stat, i) => (
                 <div key={i} className="text-center">
                   <p className="text-3xl md:text-4xl font-bold text-gray-900 mb-1">
@@ -439,7 +439,7 @@ export default function ResumeBuilder() {
         {/* CTA */}
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-gradient-to-r from-sky-500 to-green-500 rounded-3xl p-12 md:p-16 relative overflow-hidden">
+            <div className="bg-gradient-to-r from-sky-500 to-green-500 rounded-3xl p-6 sm:p-10 md:p-16 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
               <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2"></div>
 
@@ -448,10 +448,10 @@ export default function ResumeBuilder() {
                   <Rocket className="w-4 h-4" />
                   Mulai Sekarang
                 </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6">
                   Siap Membuat Resume Impianmu?
                 </h2>
-                <p className="text-sky-100 text-lg mb-8 max-w-2xl mx-auto">
+                <p className="text-sky-100 text-base sm:text-lg mb-8 max-w-2xl mx-auto">
                   Bergabung dengan ribuan pencari kerja yang sudah berhasil
                   membuat resume profesional bersama kami
                 </p>
@@ -459,14 +459,14 @@ export default function ResumeBuilder() {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link
                     href="#"
-                    className="bg-white text-sky-600 hover:bg-sky-50 px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                    className="bg-white text-sky-600 hover:bg-sky-50 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
                   >
                     Mulai Buat Resume
                     <ArrowRight className="w-5 h-5" />
                   </Link>
                   <Link
                     href="/lowongan"
-                    className="bg-transparent border-2 border-white text-white hover:bg-white/10 px-8 py-4 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-2"
+                    className="bg-transparent border-2 border-white text-white hover:bg-white/10 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg transition-all flex items-center justify-center gap-2"
                   >
                     Cari Lowongan
                   </Link>
@@ -576,15 +576,15 @@ export default function ResumeBuilder() {
         {/* Final CTA */}
         <section className="py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-gradient-to-r from-sky-500 to-green-500 rounded-3xl p-12 md:p-16 relative overflow-hidden">
+            <div className="bg-gradient-to-r from-sky-500 to-green-500 rounded-3xl p-6 sm:p-10 md:p-16 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
               <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2"></div>
 
               <div className="relative text-center">
-                <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6">
                   Mulai Perjalanan Karirmu Sekarang
                 </h2>
-                <p className="text-sky-100 text-lg mb-8 max-w-2xl mx-auto">
+                <p className="text-sky-100 text-base sm:text-lg mb-8 max-w-2xl mx-auto">
                   Buat resume profesional dan temukan lowongan kerja impianmu
                   bersama KerjaAjaDulu.com
                 </p>
@@ -592,14 +592,14 @@ export default function ResumeBuilder() {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link
                     href="#"
-                    className="bg-white text-sky-600 hover:bg-sky-50 px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                    className="bg-white text-sky-600 hover:bg-sky-50 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
                   >
                     Buat Resume Sekarang
                     <ArrowRight className="w-5 h-5" />
                   </Link>
                   <Link
                     href="/lowongan"
-                    className="bg-transparent border-2 border-white text-white hover:bg-white/10 px-8 py-4 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-2"
+                    className="bg-transparent border-2 border-white text-white hover:bg-white/10 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-bold text-base sm:text-lg transition-all flex items-center justify-center gap-2"
                   >
                     Jelajahi Lowongan
                   </Link>

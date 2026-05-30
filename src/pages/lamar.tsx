@@ -68,7 +68,7 @@ export default function LamarSekarang() {
           <Navbar />
           
           <div className="max-w-2xl mx-auto px-4 py-20 text-center">
-            <div className="bg-white rounded-3xl p-12 border border-gray-100 shadow-sm">
+            <div className="bg-white rounded-3xl p-6 sm:p-10 md:p-12 border border-gray-100 shadow-sm">
               <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
                 <CheckCircle2 className="w-10 h-10 text-green-600" />
               </div>

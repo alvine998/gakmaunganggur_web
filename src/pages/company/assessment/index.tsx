@@ -133,14 +133,14 @@ export default function AssessmentPage() {
       <CompanyLayout activePage="assessment">
         <div className="max-w-6xl mx-auto">
           {/* Page Header */}
-          <div className="flex items-center justify-between mb-8">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between mb-8">
             <div>
               <h1 className="text-3xl font-bold text-gray-900 mb-2">Assessment</h1>
               <p className="text-gray-500">Buat dan kelola assessment untuk mengukur kemampuan kandidat</p>
             </div>
             <button
               onClick={() => setShowModal(true)}
-              className="flex items-center gap-2 bg-sky-500 text-white px-5 py-3 rounded-xl font-semibold hover:bg-sky-600 transition-all shadow-md"
+              className="flex w-full sm:w-auto items-center justify-center gap-2 bg-sky-500 text-white px-5 py-3 rounded-xl font-semibold hover:bg-sky-600 transition-all shadow-md"
             >
               <Plus className="w-5 h-5" />
               Buat Assessment Baru
@@ -148,7 +148,7 @@ export default function AssessmentPage() {
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-4 gap-4 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mb-8">
             <div className="bg-white rounded-2xl border border-gray-100 p-5">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-sky-100 rounded-xl flex items-center justify-center">
@@ -208,15 +208,15 @@ export default function AssessmentPage() {
                 key={assessment.id}
                 className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 hover:shadow-md transition-all"
               >
-                <div className="flex items-center justify-between">
-                  <div className="flex items-start gap-4">
+                <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                  <div className="flex items-start gap-4 min-w-0">
                     <div className="w-12 h-12 rounded-xl bg-sky-100 flex items-center justify-center flex-shrink-0">
                       <ClipboardCheck className="w-6 h-6 text-sky-600" />
                     </div>
-                    <div>
+                    <div className="min-w-0">
                       <h3 className="font-bold text-gray-900 text-lg">{assessment.title}</h3>
                       <p className="text-sm text-gray-500 mt-0.5">{assessment.position}</p>
-                      <div className="flex items-center gap-4 mt-2 text-sm text-gray-500">
+                      <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-2 text-sm text-gray-500">
                         <span className="flex items-center gap-1">
                           <HelpCircle className="w-4 h-4" />
                           {assessment.questions} soal
@@ -233,7 +233,7 @@ export default function AssessmentPage() {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-4">
+                  <div className="flex flex-wrap items-center justify-between gap-3 sm:justify-start sm:gap-4">
                     {/* Status Badge */}
                     <span
                       className={`px-3 py-1 rounded-full text-xs font-semibold ${
@@ -324,7 +324,7 @@ export default function AssessmentPage() {
                 </div>
 
                 {/* Duration & Questions */}
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Jumlah Soal</label>
                     <input
@@ -350,7 +350,7 @@ export default function AssessmentPage() {
                 {/* Question Type */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Tipe Soal</label>
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {questionTypes.map((type) => (
                       <button
                         key={type}
