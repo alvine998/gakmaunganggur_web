@@ -63,7 +63,7 @@ const mockJobData = {
     "Pelatihan & Sertifikasi",
     "Stock Options",
   ],
-  status: "Aktif" as const,
+  status: "Aktif" as "Aktif" | "Draft",
   postedAt: "2024-01-15",
   applicants: 24,
 };
