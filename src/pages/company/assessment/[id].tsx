@@ -26,6 +26,7 @@ import {
   Eye,
   Play,
   FileText,
+  Download,
 } from "lucide-react";
 
 interface Question {
@@ -290,6 +291,7 @@ export default function DetailAssessment() {
   const [showPreviewModal, setShowPreviewModal] = useState(false);
   const [previewCurrentQuestion, setPreviewCurrentQuestion] = useState(0);
   const [previewAnswers, setPreviewAnswers] = useState<Record<number, string>>({});
+  const [selectedParticipant, setSelectedParticipant] = useState<Participant | null>(null);
   const [assessmentData, setAssessmentData] = useState<AssessmentData>({
     title: "Frontend Developer Assessment",
     position: "Senior Frontend Developer",
@@ -640,7 +642,10 @@ export default function DetailAssessment() {
                           {participant.completedAt || "-"}
                         </td>
                         <td className="px-6 py-4">
-                          <button className="p-2 text-gray-400 hover:text-sky-600 hover:bg-sky-50 rounded-lg transition-colors">
+                          <button
+                            onClick={() => setSelectedParticipant(participant)}
+                            className="p-2 text-gray-400 hover:text-sky-600 hover:bg-sky-50 rounded-lg transition-colors"
+                          >
                             <Eye className="w-4 h-4" />
                           </button>
                         </td>
@@ -1112,6 +1117,185 @@ export default function DetailAssessment() {
                     <ChevronRight className="w-4 h-4" />
                   </button>
                 )}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Participant Detail Modal */}
+        {selectedParticipant && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50">
+            <div className="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+              {/* Header */}
+              <div className="p-6 border-b border-gray-100">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-4">
+                    <div className="w-16 h-16 bg-sky-100 rounded-full flex items-center justify-center text-sky-600 font-bold text-xl">
+                      {selectedParticipant.avatar}
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900">{selectedParticipant.name}</h3>
+                      <p className="text-gray-500">{selectedParticipant.email}</p>
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => setSelectedParticipant(null)}
+                    className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                  >
+                    <X className="w-5 h-5 text-gray-500" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Score Summary */}
+              <div className="p-6 border-b border-gray-100">
+                <div className="grid grid-cols-3 gap-4">
+                  <div className="bg-gray-50 rounded-xl p-4 text-center">
+                    <p className="text-3xl font-bold text-gray-900 mb-1">
+                      {selectedParticipant.score}
+                      <span className="text-lg text-gray-400">/{selectedParticipant.totalScore}</span>
+                    </p>
+                    <p className="text-sm text-gray-500">Total Skor</p>
+                  </div>
+                  <div className="bg-gray-50 rounded-xl p-4 text-center">
+                    <p className={`text-3xl font-bold mb-1 ${
+                      selectedParticipant.score >= 80
+                        ? "text-green-600"
+                        : selectedParticipant.score >= 60
+                        ? "text-amber-600"
+                        : "text-red-600"
+                    }`}>
+                      {selectedParticipant.score}%
+                    </p>
+                    <p className="text-sm text-gray-500">Persentase</p>
+                  </div>
+                  <div className="bg-gray-50 rounded-xl p-4 text-center">
+                    <span className={`inline-block px-3 py-1 rounded-full text-sm font-semibold ${
+                      selectedParticipant.status === "Selesai"
+                        ? "bg-green-100 text-green-700"
+                        : selectedParticipant.status === "Sedang Mengerjakan"
+                        ? "bg-amber-100 text-amber-700"
+                        : "bg-gray-100 text-gray-600"
+                    }`}>
+                      {selectedParticipant.status}
+                    </span>
+                    <p className="text-sm text-gray-500 mt-2">Status</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Assessment Info */}
+              <div className="p-6 border-b border-gray-100">
+                <h4 className="font-semibold text-gray-900 mb-4">Informasi Assessment</h4>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-sky-100 rounded-xl flex items-center justify-center">
+                      <FileText className="w-5 h-5 text-sky-600" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-500">Judul Assessment</p>
+                      <p className="font-medium text-gray-900">{assessmentData.title}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center">
+                      <HelpCircle className="w-5 h-5 text-green-600" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-500">Total Soal</p>
+                      <p className="font-medium text-gray-900">{questions.length} soal</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-amber-100 rounded-xl flex items-center justify-center">
+                      <Timer className="w-5 h-5 text-amber-600" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-500">Durasi</p>
+                      <p className="font-medium text-gray-900">{assessmentData.duration} menit</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-sky-100 rounded-xl flex items-center justify-center">
+                      <Clock className="w-5 h-5 text-sky-600" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-500">Selesai Pada</p>
+                      <p className="font-medium text-gray-900">
+                        {selectedParticipant.completedAt || "-"}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Score Breakdown */}
+              <div className="p-6 border-b border-gray-100">
+                <h4 className="font-semibold text-gray-900 mb-4">Rincian Jawaban</h4>
+                <div className="space-y-3">
+                  {questions.map((question, index) => {
+                    const isCorrect = selectedParticipant.score >= 70 && index < 3;
+                    const isPartial = selectedParticipant.score >= 50 && index === 3;
+                    return (
+                      <div
+                        key={question.id}
+                        className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl"
+                      >
+                        <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${
+                          isCorrect
+                            ? "bg-green-100 text-green-600"
+                            : isPartial
+                            ? "bg-amber-100 text-amber-600"
+                            : "bg-red-100 text-red-600"
+                        }`}>
+                          {isCorrect ? (
+                            <CheckCircle2 className="w-4 h-4" />
+                          ) : isPartial ? (
+                            <Clock className="w-4 h-4" />
+                          ) : (
+                            <X className="w-4 h-4" />
+                          )}
+                        </div>
+                        <div className="flex-1">
+                          <p className="text-sm font-medium text-gray-900 line-clamp-1">
+                            Soal {index + 1}: {question.question}
+                          </p>
+                          <p className="text-xs text-gray-500">{question.type} • {question.points} poin</p>
+                        </div>
+                        <div className="text-right">
+                          <p className={`text-sm font-semibold ${
+                            isCorrect ? "text-green-600" : isPartial ? "text-amber-600" : "text-red-600"
+                          }`}>
+                            {isCorrect ? question.points : isPartial ? Math.round(question.points / 2) : 0}
+                          </p>
+                          <p className="text-xs text-gray-400">/{question.points}</p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Actions */}
+              <div className="p-6 flex items-center justify-between">
+                <button className="flex items-center gap-2 text-gray-600 hover:text-gray-800 font-medium transition-colors">
+                  <Download className="w-4 h-4" />
+                  Export Hasil
+                </button>
+                <div className="flex gap-3">
+                  {selectedParticipant.status === "Selesai" && (
+                    <button className="flex items-center gap-2 bg-green-500 text-white px-5 py-2.5 rounded-xl font-semibold hover:bg-green-600 transition-all shadow-md">
+                      <CheckCircle2 className="w-4 h-4" />
+                      Undang Wawancara
+                    </button>
+                  )}
+                  <button
+                    onClick={() => setSelectedParticipant(null)}
+                    className="px-5 py-2.5 rounded-xl font-medium text-gray-600 bg-gray-100 hover:bg-gray-200 transition-colors"
+                  >
+                    Tutup
+                  </button>
+                </div>
               </div>
             </div>
           </div>
